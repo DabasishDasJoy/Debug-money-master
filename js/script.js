@@ -11,12 +11,16 @@ const calculateExpense = () => {
   if (
     income < 0 ||
     income == "" ||
+    isNaN(income) ||
     food < 0 ||
     food == "" ||
+    isNaN(food) ||
     rent < 0 ||
     rent == "" ||
+    isNaN(rent) ||
     clothes < 0 ||
-    clothes == ""
+    clothes == "" ||
+    isNaN(clothes)
   ) {
     alert("Inputs must be positive numbers");
     return;
@@ -44,8 +48,9 @@ const calculateSavings = () => {
   const incomeString = document.querySelector("#income").value;
   const income = parseInt(incomeString);
 //   Validate saving percentage value
-  if (savePercentage < 0) {
+  if (savePercentage < 0 || !savePercentage) {
     alert("Provide positive saving value");
+    return;
   }
   const savingAmount = (savePercentage / 100) * income;
   console.log("Income: ", income);
